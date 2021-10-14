@@ -6,7 +6,8 @@ import BlogUpdate from "./components/BlogUpdate";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Navbar from "./components/Navbar";
-import {useSelector } from "react-redux";
+import { useSelector } from "react-redux";
+import PageNotFound from "./components/PageNotFound";
 
 function App() {
   const username = useSelector((state) => state.userName);
@@ -34,9 +35,9 @@ function App() {
           <Route exact path="/register">
             <Register />
           </Route>
-          {/* <Route exact path="/products/:id">
-            <ProductDetail />
-          </Route> */}
+          <Route path="">
+            {username ? <PageNotFound /> : <Redirect to="/login" />}
+          </Route>
         </Switch>
       </div>
     </BrowserRouter>
