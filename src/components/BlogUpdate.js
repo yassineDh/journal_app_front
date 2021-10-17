@@ -16,19 +16,23 @@ function BlogUpdate(props) {
   const [oldBlog, setoOldBlog] = useState({});
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/api/blogs/${id}`).then((blog) => {
-      setoOldBlog(blog.data);
-      setValues({ title: blog.data.title, content: blog.data.content });
-    });
+    axios
+      .get(`https://journal-app-back.herokuapp.com/api/blogs/${id}`)
+      .then((blog) => {
+        setoOldBlog(blog.data);
+        setValues({ title: blog.data.title, content: blog.data.content });
+      });
   }, []);
 
   let handleSubmit = (e) => {
     e.preventDefault();
     let newBlog = { ...oldBlog, ...values };
 
-    axios.put(`http://localhost:5000/api/blogs/${id}`, newBlog).then((data) => {
-      history.push("/");
-    });
+    axios
+      .put(`https://journal-app-back.herokuapp.com/api/blogs/${id}`, newBlog)
+      .then((data) => {
+        history.push("/");
+      });
   };
 
   let handleChangeTitle = (e) => {

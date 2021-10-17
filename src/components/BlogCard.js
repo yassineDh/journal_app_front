@@ -9,9 +9,11 @@ function BlogCard(props) {
   const dispatch = useDispatch();
 
   let handleDelete = (e) => {
-    axios.delete(`http://localhost:5000/api/blogs/${_id}`).then((data) => {
-      dispatch(deleteBlog(_id));
-    });
+    axios
+      .delete(`https://journal-app-back.herokuapp.com/api/blogs/${_id}`)
+      .then((data) => {
+        dispatch(deleteBlog(_id));
+      });
   };
 
   return (

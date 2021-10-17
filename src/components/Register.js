@@ -16,7 +16,7 @@ function Register() {
   let handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .post("http://localhost:5000/users/register", values)
+      .post("https://journal-app-back.herokuapp.com/users/register", values)
       .then((userData) => {
         localStorage.setItem("token", userData.data.token);
         dispatch(authUser(userData.data.username));

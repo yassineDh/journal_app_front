@@ -15,11 +15,13 @@ function Login() {
 
   let handleSubmit = (e) => {
     e.preventDefault();
-    axios.post("http://localhost:5000/users/login", values).then((userData) => {
-      localStorage.setItem("token", userData.data.token);
-      dispatch(authUser(userData.data.username));
-      history.push("/");
-    });
+    axios
+      .post("https://journal-app-back.herokuapp.com/users/login", values)
+      .then((userData) => {
+        localStorage.setItem("token", userData.data.token);
+        dispatch(authUser(userData.data.username));
+        history.push("/");
+      });
   };
 
   let handleChangeUsername = (e) => {

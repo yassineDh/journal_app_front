@@ -14,12 +14,14 @@ function BlogAdd() {
   let handleSubmit = (e) => {
     e.preventDefault();
     let blogVal = { ...values, author: username };
-    axios.post("http://localhost:5000/api/blogs", blogVal).then((data) => {
-      setValues({
-        title: "",
-        content: "",
+    axios
+      .post("https://journal-app-back.herokuapp.com/api/blogs", blogVal)
+      .then((data) => {
+        setValues({
+          title: "",
+          content: "",
+        });
       });
-    });
   };
 
   let handleChangeTitle = (e) => {

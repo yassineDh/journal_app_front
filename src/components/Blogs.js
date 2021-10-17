@@ -29,7 +29,9 @@ function Blogs() {
   const username = useSelector((state) => state.userName);
   useEffect(() => {
     axios
-      .get("http://localhost:5000/api/blogs", { params: { userId: username } })
+      .get("https://journal-app-back.herokuapp.com/api/blogs", {
+        params: { userId: username },
+      })
       .then((blogsList) => {
         dispatch(getBlogs(blogsList.data));
       });
